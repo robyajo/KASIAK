@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+import QueryProvider from "@/providers/QueryProvider";
+import NextAuthSessionProvider from "@/providers/SessionProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,14 +32,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>
+            <SonnerToaster />
+            <QueryProvider>
+              <NextAuthSessionProvider>
+                <div className="" vaul-drawer-wrapper="">
+                  {children}
+                </div>
+              </NextAuthSessionProvider>
+            </QueryProvider>
+          </TooltipProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

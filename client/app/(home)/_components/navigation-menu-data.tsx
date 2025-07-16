@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,16 +13,17 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const components = [
   {
@@ -40,18 +41,18 @@ const components = [
     href: "/year",
     description: "View yearly expenses",
   },
-]
+];
 
 export function NavigationMenuData() {
-  const pathname = usePathname()
-  const [mobileOpen, setMobileOpen] = React.useState(false)
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   // Close mobile menu when a link is clicked
   const closeMobileMenu = () => {
-    setMobileOpen(false)
-  }
+    setMobileOpen(false);
+  };
 
-  const isActive = (href: string) => pathname === href
+  const isActive = (href: string) => pathname === href;
 
   // Desktop Navigation
   const desktopNav = (
@@ -59,46 +60,73 @@ export function NavigationMenuData() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className={cn(
                 "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                isActive("/") && "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                isActive("/") &&
+                  "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
               )}
             >
               Home
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-       
+
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                  className={cn(
-                    "hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded",
-                    isActive(component.href) && "text-blue-600 dark:text-blue-400"
-                  )}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
+            <ul className="grid w-[200px] gap-4">
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/month"
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
+                      isActive("/month") &&
+                        "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                    )}
+                  >
+                    Month
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/day"
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
+                      isActive("/day") &&
+                        "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                    )}
+                  >
+                    Day
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/year"
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
+                      isActive("/year") &&
+                        "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                    )}
+                  >
+                    Year
+                  </Link>
+                </NavigationMenuLink>
+              </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link 
-              href="/blog" 
+            <Link
+              href="/blog"
               className={cn(
                 "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                isActive("/blog") && "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                isActive("/blog") &&
+                  "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
               )}
             >
               Blog
@@ -108,11 +136,12 @@ export function NavigationMenuData() {
 
         <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link 
-              href="/about" 
+            <Link
+              href="/about"
               className={cn(
                 "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                isActive("/about") && "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                isActive("/about") &&
+                  "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
               )}
             >
               About
@@ -121,7 +150,7 @@ export function NavigationMenuData() {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 
   // Mobile Navigation
   const mobileNav = (
@@ -132,11 +161,14 @@ export function NavigationMenuData() {
             <Menu className="h-6 w-6" />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-          <SheetHeader className="mb-6">
-            <SheetTitle>Menu</SheetTitle>
+        <SheetContent side="left" className="w-[280px] sm:w-[350px] p-4">
+          <SheetHeader className="mb-2">
+            <SheetTitle className="text-lg">Menu</SheetTitle>
+            <SheetDescription className="text-xs">
+              Select an option below
+            </SheetDescription>
           </SheetHeader>
-          <nav className="flex flex-col space-y-2">
+          <nav className="flex flex-col space-y-1">
             <Link
               href="/"
               onClick={closeMobileMenu}
@@ -151,8 +183,10 @@ export function NavigationMenuData() {
             </Link>
 
             <div className="px-4 py-2">
-              <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Features</h3>
-              <div className="space-y-1 pl-2">
+              <h3 className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
+                Features
+              </h3>
+              <div className="space-y-0.5 pl-2">
                 {components.map((item) => (
                   <Link
                     key={item.href}
@@ -200,43 +234,43 @@ export function NavigationMenuData() {
         </SheetContent>
       </Sheet>
     </div>
-  )
+  );
 
   return (
     <>
       <div className="hidden md:block">{desktopNav}</div>
       {mobileNav}
     </>
-  )
+  );
 }
 
 function ListItem({
-    title,
-    children,
-    href,
-    className,
-    ...props
-  }: {
-    href: string;
-    title: string;
-  } & React.AnchorHTMLAttributes<HTMLAnchorElement>) {
-    return (
-      <li className="p-2">
-        <NavigationMenuLink asChild>
-          <Link
-            href={href}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-800",
-              className
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-              {children}
-            </p>
-          </Link>
-        </NavigationMenuLink>
-      </li>
-    );
-  }
+  title,
+  children,
+  href,
+  className,
+  ...props
+}: {
+  href: string;
+  title: string;
+} & React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  return (
+    <li className="p-2">
+      <NavigationMenuLink asChild>
+        <Link
+          href={href}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 dark:hover:bg-gray-800",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  );
+}
