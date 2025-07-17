@@ -63,9 +63,8 @@ export function NavigationMenuData() {
             <Link
               href="/"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                isActive("/") &&
-                  "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                "text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400",
+                isActive("/") && "border-b-2 border-primary "
               )}
             >
               Home
@@ -82,9 +81,8 @@ export function NavigationMenuData() {
                   <Link
                     href="/month"
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                      isActive("/month") &&
-                        "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                      "text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400",
+                      isActive("/month") && "border-b-2 border-primary"
                     )}
                   >
                     Month
@@ -94,9 +92,8 @@ export function NavigationMenuData() {
                   <Link
                     href="/day"
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                      isActive("/day") &&
-                        "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                      "text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400",
+                      isActive("/day") && "border-b-2 border-primary"
                     )}
                   >
                     Day
@@ -106,9 +103,8 @@ export function NavigationMenuData() {
                   <Link
                     href="/year"
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                      isActive("/year") &&
-                        "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                      "text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400",
+                      isActive("/year") && "border-b-2 border-primary"
                     )}
                   >
                     Year
@@ -124,9 +120,8 @@ export function NavigationMenuData() {
             <Link
               href="/blog"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                isActive("/blog") &&
-                  "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                "text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400",
+                isActive("/blog") && "border-b-2 border-primary"
               )}
             >
               Blog
@@ -139,9 +134,8 @@ export function NavigationMenuData() {
             <Link
               href="/about"
               className={cn(
-                "text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400",
-                isActive("/about") &&
-                  "text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1"
+                "text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400",
+                isActive("/about") && "border-b-2 border-primary"
               )}
             >
               About
@@ -175,7 +169,7 @@ export function NavigationMenuData() {
               className={cn(
                 "px-4 py-2 rounded-md text-sm font-medium transition-colors",
                 isActive("/")
-                  ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                  ? "bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
                   : "hover:bg-gray-100 dark:hover:bg-gray-800"
               )}
             >
@@ -195,7 +189,7 @@ export function NavigationMenuData() {
                     className={cn(
                       "block px-4 py-2 text-sm rounded-md transition-colors",
                       isActive(item.href)
-                        ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                        ? "bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
                         : "hover:bg-gray-100 dark:hover:bg-gray-800"
                     )}
                   >
@@ -211,7 +205,7 @@ export function NavigationMenuData() {
               className={cn(
                 "px-4 py-2 rounded-md text-sm font-medium transition-colors",
                 isActive("/blog")
-                  ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                  ? "bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
                   : "hover:bg-gray-100 dark:hover:bg-gray-800"
               )}
             >
@@ -224,7 +218,7 @@ export function NavigationMenuData() {
               className={cn(
                 "px-4 py-2 rounded-md text-sm font-medium transition-colors",
                 isActive("/about")
-                  ? "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                  ? "bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
                   : "hover:bg-gray-100 dark:hover:bg-gray-800"
               )}
             >

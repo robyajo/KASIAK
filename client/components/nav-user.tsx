@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   BadgeCheck,
@@ -7,13 +7,9 @@ import {
   CreditCard,
   LogOut,
   Sparkles,
-} from "lucide-react"
+} from "lucide-react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,25 +18,53 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import axios from "@/lib/axios";
+import { signOut, useSession } from "next-auth/react";
+import { toast } from "sonner";
 
 export function NavUser({
   user,
 }: {
   user: {
-    name: string
-    email: string
-    avatar: string
-  }
+    name: string;
+    email: string;
+    avatar: string;
+  };
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
+  const { data: session } = useSession();
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/logout`,
+        {},
+        {
+          headers: {
+            // Ensure session and accessToken are available and valid here
+            Authorization: `Bearer ${session?.accessToken}`,
+          },
+        }
+      );
+      console.log("SSO Pekanbaru logout successful");
+    } catch (error) {
+      console.error("Error logging out from SSO Pekanbaru:", error);
+    }
 
+    try {
+      await signOut({ callbackUrl: "/", redirect: true }); // Ensure redirect happens
+      toast.success("Logout successful. Redirecting...");
+    } catch (error) {
+      console.error("Error during NextAuth signOut:", error);
+      toast.error("Logout failed. Please try again.");
+    }
+  };
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -102,7 +126,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>
               <LogOut />
               Log out
             </DropdownMenuItem>
@@ -110,5 +134,5 @@ export function NavUser({
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  )
+  );
 }

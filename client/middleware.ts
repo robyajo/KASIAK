@@ -12,9 +12,13 @@ export default withAuth(
     }
 
     // Check for admin dashboard access
-    if (path.startsWith("/dashboard")) {
-      if (token.user?.role !== "admin") {
-        // Redirect to home or unauthorized page if not admin
+    // if (path.startsWith("/dashboard")) {
+    //   if (token.user?.role !== "admin") {
+    //     return NextResponse.redirect(new URL("/", request.url));
+    //   }
+    // }
+    if (path.startsWith("/users")) {
+      if (token.user?.role !== "Admin" && token.user?.role !== "Super Admin") {
         return NextResponse.redirect(new URL("/", request.url));
       }
     }
